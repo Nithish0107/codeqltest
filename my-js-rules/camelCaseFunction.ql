@@ -1,6 +1,13 @@
-import javascript 
-from Function f
+/**
+* @name Function name should be camelCase
+* @description Detects JavaScript functions with underscore in name
+* @kind problem
+* @problem.severity warning
+*/
+ 
+import javascript
+ 
+from FunctionDeclaration f
 where
-  f.hasName() and
-  not f.getName().matches("[a-z][a-zA-Z0-9]*")
-select f, "Custom JS rule: Function name must be camelCase"
+  f.getName().matches(".*_.*")
+select f, "Function name contains underscore. Use camelCase."
