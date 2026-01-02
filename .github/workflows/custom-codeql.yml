@@ -4,19 +4,23 @@ on:
   push:
   pull_request:
  
+permissions:
+  contents: read
+  security-events: write
+ 
 jobs:
   analyze:
     runs-on: ubuntu-latest
  
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
  
-    - name: Initialize CodeQL
-      uses: github/codeql-action/init@v3
-      with:
-        languages: javascript
-        queries: ./my-js-rules/camelCaseFunction.ql
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: javascript
+          queries: ./my-js-rules/camelCaseFunction.ql
  
-    - name: Analyze
-      uses: github/codeql-action/analyze@v3
+      - name: Analyze
+        uses: github/codeql-action/analyze@v3
