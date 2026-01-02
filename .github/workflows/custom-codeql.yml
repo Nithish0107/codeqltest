@@ -1,0 +1,22 @@
+name: Custom JS CodeQL Scan
+ 
+on:
+  push:
+  pull_request:
+ 
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+ 
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+ 
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v3
+      with:
+        languages: javascript
+        queries: ./my-js-rules
+ 
+    - name: Analyze
+      uses: github/codeql-action/analyze@v3
