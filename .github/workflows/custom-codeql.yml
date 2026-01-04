@@ -1,13 +1,12 @@
-name: CodeQL JS Scan
+name: Custom CodeQL (JavaScript)
  
 on:
   push:
     branches:
-      - main
       - master
+      - nithish
   pull_request:
     branches:
-      - main
       - master
  
 permissions:
@@ -30,4 +29,3 @@ jobs:
  
       - name: Analyze
         uses: github/codeql-action/analyze@v3
- 
