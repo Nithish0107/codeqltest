@@ -5,6 +5,7 @@
 * @problem.severity warning
 * @precision high
 * @tags code-quality
+* @id js/non-camelcase-parameter-name
 */
  
 import javascript
