@@ -26,7 +26,7 @@ jobs:
         uses: github/codeql-action/init@v3
         with:
           languages: javascript
-          queries: ./my-js-rules/camelCaseFunction.ql
+          queries: ./my-js-rules
  
       - name: Analyze
         uses: github/codeql-action/analyze@v3
