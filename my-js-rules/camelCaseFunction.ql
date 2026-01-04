@@ -1,6 +1,6 @@
 /**
 * @name Function name is not camelCase
-* @description Flags JavaScript functions with underscores in the name
+* @description Flags JavaScript functions that contain underscores
 * @kind problem
 * @severity warning
 */
@@ -9,7 +9,7 @@ import javascript
  
 from Function f
 where
-  f.hasName() and
+  f.getName() != "" and
   f.getName().matches(".*_.*")
 select
   f,
