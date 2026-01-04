@@ -1,3 +1,3 @@
-function bad_function_name() {}
-const BadFunction = function () {}
-const another_bad_function = () => {}
+function bad_function_name() {
+  return 1;
+}
