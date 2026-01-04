@@ -1,18 +1,17 @@
 /**
- * @id js/camelcase-function-name
- * @name Function name is not camelCase
- * @description Flags JavaScript functions that contain underscores
- * @kind problem
- * @severity warning
- */
+* @name Non-camelCase JavaScript function name
+* @description Detects JavaScript functions whose names are not camelCase.
+* @kind problem
+* @problem.severity warning
+* @precision medium
+* @id js/non-camelcase-function-name
+*/
  
 import javascript
  
 from Function f
 where
   f.getName() != "" and
-  f.getName().matches(".*_.*")
-select
-  f,
+  not f.getName().matches("[a-z][a-zA-Z0-9]*")
+select f,
   "Function name '" + f.getName() + "' should be camelCase."
- 

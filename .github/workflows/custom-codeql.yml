@@ -1,21 +1,20 @@
-name: Custom CodeQL (JavaScript)
+name: "CodeQL"
  
 on:
-  push:
-    branches:
-      - master
-      - nithish
   pull_request:
-    branches:
-      - master
- 
-permissions:
-  contents: read
-  security-events: write
+    branches: [ "master" ]
+  push:
+    branches: [ "master" ]
  
 jobs:
   analyze:
+    name: Analyze
     runs-on: ubuntu-latest
+ 
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
  
     steps:
       - name: Checkout repository
@@ -27,5 +26,5 @@ jobs:
           languages: javascript
           queries: ./my-js-rules
  
-      - name: Analyze
+      - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
