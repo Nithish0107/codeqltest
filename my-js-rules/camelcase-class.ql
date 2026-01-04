@@ -8,13 +8,14 @@
  
 import javascript
  
-predicate isNotCamelCase(string name) {
-  not name.matches("[a-z][a-zA-Z0-9]*")
+predicate isNotCamelCase(string s) {
+  not s.matches("[A-Z][a-zA-Z0-9]*")
 }
  
-from ClassDeclaration c
+from ClassDeclaration c, string name
 where
-  isNotCamelCase(c.getName())
+  name = c.getName() and
+  isNotCamelCase(name)
 select
   c,
-  "Class name '" + c.getName() + "' should be camelCase."
+  "Class name '" + name + "' should use PascalCase."
