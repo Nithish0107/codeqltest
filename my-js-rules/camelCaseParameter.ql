@@ -1,6 +1,6 @@
 /**
 * @name Non-camelCase JavaScript parameter
-* @description Detects JavaScript function parameters that are not camelCase.
+* @description Function parameters should be camelCase.
 * @kind problem
 * @problem.severity warning
 * @precision high
@@ -9,10 +9,9 @@
  
 import javascript
  
-from Identifier id
+from Parameter p
 where
-  id.isParameter() and
-  id.getName() != "" and
-  not id.getName().matches("[a-z][a-zA-Z0-9]*")
-select id,
-  "Parameter '" + id.getName() + "' should be camelCase."
+  p.getName() != "" and
+  not p.getName().matches("[a-z][a-zA-Z0-9]*")
+select p,
+  "Parameter '" + p.getName() + "' should be camelCase."
