@@ -1,21 +1,17 @@
 /**
-* @name Non-camelCase JavaScript function names
+* @name Non-camelCase JavaScript function name
+* @description Detects JavaScript functions whose names are not camelCase.
 * @kind problem
-* @problem.severity error
-* @precision high
-* @tags code-quality maintainability
+* @problem.severity warning
+* @precision medium
+* @id js/non-camelcase-function-name
 */
  
 import javascript
  
-predicate isNotCamelCase(string s) {
-  not s.matches("[a-z][a-zA-Z0-9]*")
-}
- 
-from Function f, string name
+from Function f
 where
-  name = f.getName() and
-  isNotCamelCase(name)
-select
-  f,
-  "Function name '" + name + "' should be camelCase."
+  f.getName() != "" and
+  not f.getName().matches("[a-z][a-zA-Z0-9]*")
+select f,
+  "Function name '" + f.getName() + "' should be camelCase."
