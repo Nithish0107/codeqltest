@@ -1,21 +1,16 @@
 /**
-* @name Non-camelCase JavaScript variable names
+* @name Non-camelCase JavaScript variable name
+* @description JavaScript variables should be camelCase
 * @kind problem
-* @problem.severity error
+* @problem.severity warning
 * @precision high
-* @tags code-quality maintainability
+* @tags code-quality
 */
  
 import javascript
  
-predicate isNotCamelCase(string s) {
-  not s.matches("[a-z][a-zA-Z0-9]*")
-}
- 
-from VariableDeclarator v, string name
+from Variable v
 where
-  name = v.getName() and
-  isNotCamelCase(name)
-select
-  v,
-  "Variable name '" + name + "' should be camelCase."
+  not v.getName().matches("[a-z][a-zA-Z0-9]*")
+select v,
+  "Variable '" + v.getName() + "' should be camelCase."
