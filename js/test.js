@@ -1,11 +1,20 @@
-function bad_function_name() {
+// ❌ Bad function name
+function Bad_function() {
   return 1;
 }
  
-function Another_BadFunction() {
-  return 2;
+// ❌ Bad variable name
+var bad_variable = 10;
+ 
+// ❌ Bad class name
+class bad_class {
+  constructor() {
+    this.Bad_property = bad_variable;
+  }
 }
  
-const another_bad_function = () => {
-  return 3;
-};
+// ✅ Correct examples (should NOT alert)
+function goodFunction() {
+  let goodVariable = 5;
+  return goodVariable;
+}
