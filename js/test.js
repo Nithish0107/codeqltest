@@ -1,25 +1,23 @@
-function Bad_function_name() {
-  let bad_variable_name = 10;
-  let Another_Bad_Variable = 20;
+function Bad_function_name(bad_param_name, AnotherBadParam) {
+  let localValue = 10;
  
-  function inner_BadFunction() {
-    let inner_bad_variable = 5;
-    return inner_bad_variable;
+  function inner_BadFunction(Inner_bad_param) {
+    let result = Inner_bad_param + localValue;
+    return result;
   }
  
-  let result_value = inner_BadFunction();
-  return result_value + bad_variable_name;
+  const Arrow_BadFunction = (Arrow_bad_param) => {
+    return Arrow_bad_param * 2;
+  };
+ 
+  let firstResult = inner_BadFunction(bad_param_name);
+  let secondResult = Arrow_BadFunction(AnotherBadParam);
+ 
+  return firstResult + secondResult;
 }
  
-function another_bad_function() {
-  var wrong_var_name = 100;
-  let CorrectVariable = 50;
- 
-  function Nested_bad_function() {
-    let nested_wrong_name = 1;
-    return nested_wrong_name;
-  }
- 
-  return wrong_var_name + Nested_bad_function();
+function goodFunction(goodParamOne, goodParamTwo) {
+  return goodParamOne + goodParamTwo;
 }
  
+Bad_function_name(5, 10);
