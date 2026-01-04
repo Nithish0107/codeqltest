@@ -1,13 +1,10 @@
-name: Custom CodeQL (JavaScript)
+name: CodeQL
  
 on:
-  push:
-    branches:
-      - master
-      - nithish
   pull_request:
-    branches:
-      - master
+    branches: [ master ]
+  push:
+    branches: [ master ]
  
 permissions:
   contents: read
@@ -18,8 +15,7 @@ jobs:
     runs-on: ubuntu-latest
  
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
  
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
