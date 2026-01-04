@@ -1,6 +1,6 @@
 /**
-* @name Non-camelCase JavaScript variable name
-* @description JavaScript variables should be camelCase
+* @name Non-camelCase JavaScript variable
+* @description JavaScript variable names should be camelCase
 * @kind problem
 * @problem.severity warning
 * @precision high
@@ -9,8 +9,9 @@
  
 import javascript
  
-from Variable v
+from VariableDeclarator vd, Identifier id
 where
-  not v.getName().matches("[a-z][a-zA-Z0-9]*")
-select v,
-  "Variable '" + v.getName() + "' should be camelCase."
+  id = vd.getId() and
+  not id.getName().matches("[a-z][a-zA-Z0-9]*")
+select id,
+  "Variable '" + id.getName() + "' should be camelCase."
