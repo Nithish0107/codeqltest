@@ -8,14 +8,14 @@
  
 import javascript
  
-predicate isNotCamelCase(string name) {
-  not name.matches("[a-z][a-zA-Z0-9]*")
+predicate isNotCamelCase(string s) {
+  not s.matches("[a-z][a-zA-Z0-9]*")
 }
  
-from Function f
+from Function f, string name
 where
-  f.hasName() and
-  isNotCamelCase(f.getName())
+  name = f.getName() and
+  isNotCamelCase(name)
 select
   f,
-  "Function name '" + f.getName() + "' should be camelCase."
+  "Function name '" + name + "' should be camelCase."
