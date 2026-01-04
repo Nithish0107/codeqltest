@@ -1,7 +1,11 @@
-name: Custom JS CodeQL Scan
+name: CodeQL JS Scan
  
 on:
   push:
+    branches:
+      - main
+      - master
+  pull_request:
     branches:
       - main
       - master
@@ -26,3 +30,4 @@ jobs:
  
       - name: Analyze
         uses: github/codeql-action/analyze@v3
+ 
