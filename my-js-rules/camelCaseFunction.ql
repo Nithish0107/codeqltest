@@ -2,7 +2,7 @@
 * @name Non-camelCase JavaScript function name
 * @description Detects JavaScript functions whose names are not camelCase.
 * @kind problem
-* @problem.severity error
+* @problem.severity warning
 * @precision medium
 * @id js/non-camelcase-function-name
 */
