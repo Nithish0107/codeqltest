@@ -2,7 +2,7 @@
 * @name Non-camelCase JavaScript parameter
 * @description Function parameters should be camelCase.
 * @kind problem
-* @problem.severity warning
+* @problem.severity error
 * @precision high
 * @tags code-quality
 * @id js/non-camelcase-parameter-name
