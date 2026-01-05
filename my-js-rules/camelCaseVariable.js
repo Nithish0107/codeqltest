@@ -2,7 +2,7 @@
 * @name Non-camelCase JavaScript variable
 * @description JavaScript variable names should be camelCase
 * @kind problem
-* @problem.severity warning
+* @problem.severity error
 * @precision high
 * @tags code-quality
 * @id js/non-camelcase-variable-name
