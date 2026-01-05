@@ -1,0 +1,11 @@
+{
+  "env": {
+    "node": true,
+    "es2021": true
+  },
+  "rules": {
+    "camelcase": ["error", { "properties": "always" }],
+    "no-unused-vars": "warn",
+    "no-console": "warn"
+  }
+}
