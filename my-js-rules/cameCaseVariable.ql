@@ -1,4 +1,4 @@
-**
+/**
 * @name Non-camelCase JavaScript variable
 * @description Detects JavaScript variables whose names are not camelCase.
 * @kind problem
