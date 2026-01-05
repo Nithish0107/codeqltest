@@ -12,8 +12,7 @@ import javascript
  
 from VariableDeclarator vd
 where
-  vd.getId() instanceof Identifier and
-  vd.getId().(Identifier).getName() != "" and
-  not vd.getId().(Identifier).getName().matches("[a-z][a-zA-Z0-9]*")
+  vd.getName() != "" and
+  not vd.getName().matches("[a-z][a-zA-Z0-9]*")
 select vd,
-  "Variable '" + vd.getId().(Identifier).getName() + "' should be camelCase."
+  "Variable '" + vd.getName() + "' should be camelCase."
