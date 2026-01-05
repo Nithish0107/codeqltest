@@ -10,10 +10,9 @@
  
 import javascript
  
-from NameDeclaration nd
+from VariableDeclarator vd
 where
-  nd.getKind() = "variable" and
-  nd.hasName() and
-  not nd.getName().matches("[a-z][a-zA-Z0-9]*")
-select nd,
-  "Variable '" + nd.getName() + "' should be camelCase."
+  vd.getId() instanceof Identifier and
+  not vd.getId().(Identifier).getName().matches("[a-z][a-zA-Z0-9]*")
+select vd,
+  "Variable '" + vd.getId().(Identifier).getName() + "' should be camelCase."
