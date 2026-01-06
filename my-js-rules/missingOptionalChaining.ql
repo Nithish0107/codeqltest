@@ -1,6 +1,6 @@
 /**
 * @name Missing optional chaining
-* @description Detects property access without optional chaining.
+* @description Detects property access that does not use optional chaining.
 * @kind problem
 * @problem.severity warning
 * @precision medium
@@ -11,9 +11,15 @@
 import javascript
 import javascript/optional-chaining
  
+/**
+* BAD: normal property access (obj.prop)
+*/
 from PropertyAccess pa
 where
-  not pa instanceof OptionalPropertyAccess
+  not exists(OptionalPropertyAccess opa |
+    opa.getPropertyName() = pa.getPropertyName() and
+    opa.getQualifier() = pa.getQualifier()
+  )
 select
   pa,
-  "Property access without optional chaining. Consider using '?.' to avoid runtime errors."
+  "BAD: Property access without optional chaining. Consider using '?.'."
