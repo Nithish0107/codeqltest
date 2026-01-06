@@ -10,9 +10,6 @@
  
 import javascript
  
-from Expr::PropAccess pa
-where
-  pa.getQualifier() instanceof NullLiteral
-select
-  pa,
-  "Property access on a value that is definitely null."
+from PropAccess pa
+where pa.getQualifier() instanceof NullLiteral
+select pa, "Property access on a value that is definitely null."
