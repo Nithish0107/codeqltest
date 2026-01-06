@@ -1,37 +1,16 @@
 /**
 * @name Possible missing null check before property access
-* @description Finds property accesses where the base value may be null or undefined.
-* @kind path-problem
+* @description Finds property accesses where the base expression is literally null.
+* @kind problem
 * @problem.severity warning
-* @precision medium
+* @precision high
 * @tags reliability correctness
 * @id js/missing-null-check-property-access
 */
  
 import javascript
  
-/**
-* A property access (x.y or x["y"]).
-*/
-class AnyPropAccess extends Expr {
-  AnyPropAccess() { this instanceof PropAccess }
-}
- 
-/**
-* A value that may be null or undefined.
-*/
-predicate mayBeNullOrUndefined(Expr e) {
-  e.getType().isNullable() or e.getType().isUndefined()
-}
- 
-from AnyPropAccess pa, Expr base
-where
-  base = pa.getBase() and
-  mayBeNullOrUndefined(base) and
-  // No obvious null/undefined check on the base expression in the same condition.
-  not exists(IfStmt ifs |
-    ifs.getCondition().(Expr).(BinaryExpr).getAnOperand() = base and
-    ifs.getThen() = pa.getEnclosingStmt()
-  )
+from PropAccess pa
+where pa.getBase() instanceof NullLiteral
 select pa,
-  "Possible missing null/undefined check before accessing this property."
+  "Property access on a value that is definitely null (missing null check?)."
