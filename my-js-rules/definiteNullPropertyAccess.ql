@@ -10,7 +10,7 @@
  
 import javascript
  
-from PropertyAccessExpr pa
+from PropertyAccess pa
 where
   pa.getQualifier() instanceof NullLiteral
 select
