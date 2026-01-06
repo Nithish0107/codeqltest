@@ -1,6 +1,6 @@
 /**
 * @name Definite null property access
-* @description Accessing a property on a value that is definitely null.
+* @description Detects property access on a value that is definitely null.
 * @kind problem
 * @problem.severity error
 * @precision high
@@ -10,7 +10,7 @@
  
 import javascript
  
-from PropertyAccess pa
+from PropertyAccessExpr pa
 where
   pa.getQualifier() instanceof NullLiteral
 select
