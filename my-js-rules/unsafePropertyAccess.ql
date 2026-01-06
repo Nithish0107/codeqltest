@@ -1,20 +1,23 @@
 /**
 * @name Unsafe property access
-* @description Detects property access that may throw if the base object is null or undefined.
+* @description Detects possible unsafe object property access without null checks.
 * @kind problem
 * @problem.severity warning
-* @precision medium
-* @tags reliability code-quality
+* @precision low
+* @tags reliability
 * @id js/unsafe-property-access
 */
  
 import javascript
-import javascript/property-access
  
-from PropertyAccess pa
+from Expr e
 where
-  // Ignore obvious literals like "abc".length
-  not pa.getQualifier() instanceof Literal
+  // Heuristic: dot access like a.b or a.b.c
+  e.toString().matches(".*\\..*") and
+ 
+  // Exclude obvious safe literals
+  not e.toString().matches("\".*\"\\..*") and
+  not e.toString().matches("\\d+\\..*")
 select
-  pa,
-  "Property access may be unsafe. Consider adding a null check or using optional chaining (?.)."
+  e,
+  "Possible unsafe property access. Consider adding a null check or using optional chaining (?.)."
