@@ -9,10 +9,11 @@
 */
  
 import javascript
+import javascript/property-access
  
 from PropertyAccess pa
 where
-  // Ignore accesses on literals like "abc".length
+  // Ignore obvious literals like "abc".length
   not pa.getQualifier() instanceof Literal
 select
   pa,
